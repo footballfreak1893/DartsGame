@@ -1,0 +1,49 @@
+ switch (eingabeX01)
+                {
+
+                    case "501":
+                        Console.WriteLine("-----501-----");
+                        spiele.SX01(eingabeX01, 501);
+                        break;
+
+                    case "301":
+                        Console.WriteLine("-----301-----");
+                        spiele.SX01(eingabeX01, 301);
+                        break;
+
+                    case "201":
+                        Console.WriteLine("-----201-----");
+                        spiele.SX01(eingabeX01, 201);
+                        break;
+
+                    case "170":
+                        Console.WriteLine("-----170-----");
+                        spiele.SX01(eingabeX01, 170);
+                        break;
+
+                    default:
+                        return;
+
+                }
+
+				 int punktestand;
+
+        public void setPunkte(int ppunkte)
+        {
+            punkte = ppunkte;
+        }
+
+        public int getPunkte()
+        {
+            return punkte;
+        }
+
+        public void setPunktestand(int ppunktestand)
+        {
+            punkte = ppunktestand;
+        }
+
+        public int getPunktestand()
+        {
+            return punktestand;
+        }
