@@ -21,6 +21,10 @@ namespace ConsoleApp1
             string eingabewurf2;
             string eingabewurf3;
             int runde = 0;
+            int[] treffer = new int[7];
+            int eingabe1;
+            int eingabe2;
+            int eingabe3;
 
             //Cricket Zahlen
             // n --> number
@@ -81,7 +85,7 @@ namespace ConsoleApp1
                         eingabewurf1 = Console.ReadLine();
                         canConvert = int.TryParse(eingabewurf1, out wurf1);
                     }
-
+                   // Cricket überprüfen eingabe1 = treffer[] - 15;
                 }
                 switch (eingabewurf1)
                 {
