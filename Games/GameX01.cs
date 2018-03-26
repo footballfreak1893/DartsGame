@@ -20,6 +20,7 @@ namespace ConsoleApp1
             Console.WriteLine("170 -->press 170");
             Console.WriteLine("Zurück zum Hauptmenü -->press exit");
             var eingabeX01 = Console.ReadLine();
+            Console.Clear();
             while (true)
             {
                 if (eingabeX01 != "501" && eingabeX01 != "exit" && eingabeX01 != "301" && eingabeX01 != "201" && eingabeX01 != "170")
@@ -31,6 +32,7 @@ namespace ConsoleApp1
                     Console.WriteLine("170 -->press 170");
                     Console.WriteLine("Zurück zum Hauptmenü -->press exit");
                     eingabeX01 = Console.ReadLine();
+                    Console.Clear();
                 }
                 else if (eingabeX01 == "exit")
                 {
@@ -83,6 +85,7 @@ namespace ConsoleApp1
                     Console.WriteLine("Ungültiger Wert");
                     Console.WriteLine("Punkezahl eingeben");
                     eingabepunkte = Console.ReadLine();
+                    Console.Clear();
                 }
 
                 punktestand = punktestand - punkte;
@@ -91,6 +94,7 @@ namespace ConsoleApp1
             Console.WriteLine("Spiel erneut starten -->press: reset");
             Console.WriteLine("Zurück zum Menü X01 -->press exit");
             eingabeX01 = Console.ReadLine();
+            Console.Clear();
 
             while (eingabeX01 != "reset" && eingabeX01 != "exit")
             {
@@ -98,6 +102,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Zurück zum Menü X01 -->press X01");
                 Console.WriteLine("Zurück zum Hauptmenü -->press exit");
                 eingabeX01 = Console.ReadLine();
+                Console.Clear();
             }
             if (eingabeX01 == "reset")
             {

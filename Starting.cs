@@ -24,6 +24,7 @@ namespace ConsoleApp1
             Console.WriteLine("Shanghai -->press SHA");
             Console.WriteLine("Cricket -->press CRI");
             string eingabekategorie = Console.ReadLine();
+            Console.Clear();
 
             while (true)
             {
@@ -35,6 +36,7 @@ namespace ConsoleApp1
                     Console.WriteLine("Shanghai -->press SHA");
                     Console.WriteLine("Cricket -->press CRI");
                     eingabekategorie = Console.ReadLine();
+                    Console.Clear();
                 }
                 else if (eingabekategorie == "X01")
                 {
