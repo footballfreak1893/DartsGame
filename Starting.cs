@@ -41,7 +41,7 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "X01")
                 {
                     spiele.X01();
-                    break;
+                    continue;
                 }
                 else if (eingabekategorie == "SHA")
                 {
@@ -51,6 +51,7 @@ namespace ConsoleApp1
                 else
                 {
                     cricket.CricketGame();
+                    break;
                 }
             }
 

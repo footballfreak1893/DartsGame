@@ -48,16 +48,17 @@ namespace ConsoleApp1
 
         public void SX01(string eingabeX01)
         {
+            int punkte=0;
             Console.WriteLine("-----" + eingabeX01 + "-----");
             int punktestand;
             punktestand = Convert.ToInt32(eingabeX01);
 
-            while (punktestand > 0)
+            while (punktestand -punkte !=0 )
             {
                 Console.WriteLine("Punkestand " + punktestand);
                 Console.WriteLine("Punkezahl eingeben");
                 var eingabepunkte = Console.ReadLine();
-                int punkte;
+                
 
                 if (eingabepunkte == "reset")
                 {
@@ -67,6 +68,8 @@ namespace ConsoleApp1
                 {
                     break;
                 }
+
+
 
                 //Überprüfung Zahl
                 bool canConvert = int.TryParse(eingabepunkte, out punkte);
@@ -79,16 +82,38 @@ namespace ConsoleApp1
                     canConvert = int.TryParse(eingabepunkte, out punkte);
                 }
 
-                //Überprüfung Maximum/Minimum                   ----> Achtung: Fall nochmals überprüfen
+                //Überprüfung Maximum/Minimum                  
                 while (punkte > 180 || punkte < 0)
                 {
                     Console.WriteLine("Ungültiger Wert");
                     Console.WriteLine("Punkezahl eingeben");
                     eingabepunkte = Console.ReadLine();
                     Console.Clear();
-                }
 
+                    //Überprüfung Zahl
+                    canConvert = int.TryParse(eingabepunkte, out punkte);
+
+                    while (canConvert == false)
+                    {
+                        Console.WriteLine("Ungültiger Wert");
+                        Console.WriteLine("Punkezahl eingeben");
+                        eingabepunkte = Console.ReadLine();
+                        canConvert = int.TryParse(eingabepunkte, out punkte);
+                    }
+                }
+                //Überprüfen, das Methode beendet wird
+                int ipunktestand = punktestand;
+                //punktestand = punktestand - punkte;
+                if ((ipunktestand = ipunktestand - punkte) <0)
+                {
+                    Console.WriteLine("Ungültiger Wert");
+                    punktestand = punktestand - 0;
+                }
                 punktestand = punktestand - punkte;
+               
+                Console.WriteLine("p" + punktestand);
+               
+                
             }
             Console.WriteLine("Spiel beendet");
             Console.WriteLine("Spiel erneut starten -->press: reset");
