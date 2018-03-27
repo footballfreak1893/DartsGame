@@ -42,14 +42,17 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "classic")
                 {
                     SHAClassic(eingabekategorie);
+                    Console.WriteLine("hallo");
+                    break;
                 }
                 else if (eingabekategorie == "clock")
                 {
                     ClockMenu();
+                    break;
                 }
                 else if (eingabekategorie == "exit")
                 {
-                    return; //--> Soll Hauptmenü aufrufen
+                    return; 
                 }
             }
         }
@@ -74,7 +77,7 @@ namespace ConsoleApp1
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        SHA();
+                        return;
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -126,7 +129,7 @@ namespace ConsoleApp1
             {
                 SHA();
             }
-            else if (eingabekategorie == "reset") ;
+            else if (eingabekategorie == "reset") 
             {
                 SHAClassic(eingabekategorie);
             }
@@ -169,13 +172,10 @@ namespace ConsoleApp1
                 {
                     TrippleTripple();
                 }
-                else if (eingabekategorie == "clock")
-                {
-                    //return; //--> Soll Hauptmenü aufrufen
-                }
-                else if (eingabekategorie == "exit")
+                else 
                 {
                     return;
+                    
                 }
             }
         }
@@ -190,7 +190,7 @@ namespace ConsoleApp1
                 for (int wurf = 0; wurf <= 2; wurf++)
                 {
                     Console.WriteLine("Runde " + runde);
-                    Console.WriteLine("Zuwerfende Zahl " + anzeigezahl);
+                    Console.WriteLine("Zuwerfende Zahl: Single " + anzeigezahl);
                     Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
                     eingabewuerfe[wurf] = Console.ReadLine();
 
@@ -249,7 +249,7 @@ namespace ConsoleApp1
             {
                 TrippleSingle();
             }
-            else if (eingabekategorie == "exit") ;
+            else if (eingabekategorie == "exit") 
             {
                 ClockMenu();
             }
@@ -265,7 +265,7 @@ namespace ConsoleApp1
                 for (int wurf = 0; wurf <= 2; wurf++)
                 {
                     Console.WriteLine("Runde " + runde);
-                    Console.WriteLine("Zuwerfende Zahl " + anzeigezahl);
+                    Console.WriteLine("Zuwerfende Zahl: Double " + anzeigezahl);
                     Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
                     eingabewuerfe[wurf] = Console.ReadLine();
 
@@ -342,7 +342,7 @@ namespace ConsoleApp1
                 for (int wurf = 0; wurf <= 2; wurf++)
                 {
                     Console.WriteLine("Runde " + runde);
-                    Console.WriteLine("Zuwerfende Zahl " + anzeigezahl);
+                    Console.WriteLine("Zuwerfende Zahl: Tripple " + anzeigezahl);
                     Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
                     eingabewuerfe[wurf] = Console.ReadLine();
 

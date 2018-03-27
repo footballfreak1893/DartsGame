@@ -41,11 +41,12 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "X01")
                 {
                     spiele.X01();
-                    return;
+                    break;
                 }
                 else if (eingabekategorie == "SHA")
                 {
                     shanghai.SHA();
+                    break;
                 }
                 else
                 {
