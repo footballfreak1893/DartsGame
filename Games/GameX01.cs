@@ -53,7 +53,7 @@ namespace ConsoleApp1
             int punktestand;
             punktestand = Convert.ToInt32(eingabeX01);
 
-            while (punktestand -punkte !=0 )
+            while (punktestand != 0)
             {
                 Console.WriteLine("Punkestand " + punktestand);
                 Console.WriteLine("Punkezahl eingeben");
@@ -102,16 +102,18 @@ namespace ConsoleApp1
                     }
                 }
                 //Überprüfen, das Methode beendet wird
-                int ipunktestand = punktestand;
+
                 //punktestand = punktestand - punkte;
-                if ((ipunktestand = ipunktestand - punkte) <0)
+                if (( punktestand - punkte) < 0)
                 {
                     Console.WriteLine("Ungültiger Wert");
                     punktestand = punktestand - 0;
                 }
-                punktestand = punktestand - punkte;
+                else
+                {
+                    punktestand = punktestand - punkte;
+                }
                
-                Console.WriteLine("p" + punktestand);
                
                 
             }
