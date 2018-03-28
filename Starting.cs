@@ -22,7 +22,7 @@ namespace ConsoleApp1
             Console.WriteLine("Kategorie auswählen");
             Console.WriteLine("X01 -->press X01");
             Console.WriteLine("Shanghai -->press SHA");
-            Console.WriteLine("Cricket -->press CRI");
+           // Console.WriteLine("Cricket -->press CRI");
             string eingabekategorie = Console.ReadLine();
             Console.Clear();
 
@@ -41,7 +41,7 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "X01")
                 {
                     spiele.X01();
-                    continue;
+                    break;
                 }
                 else if (eingabekategorie == "SHA")
                 {

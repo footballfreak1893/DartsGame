@@ -42,8 +42,8 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "classic")
                 {
                     SHAClassic(eingabekategorie);
-                    Console.WriteLine("hallo");
-                    break;
+                    
+                    
                 }
                 else if (eingabekategorie == "clock")
                 {
@@ -52,7 +52,7 @@ namespace ConsoleApp1
                 }
                 else if (eingabekategorie == "exit")
                 {
-                    return; 
+                    Starting.Start(); 
                 }
             }
         }
@@ -73,11 +73,12 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
-                        SHAClassic(eingabekategorie);
+                        return; //-->funktioniert nicht korrekt
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        return;
+                        Console.Clear();
+                        SHA();
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -131,7 +132,7 @@ namespace ConsoleApp1
             }
             else if (eingabekategorie == "reset") 
             {
-                SHAClassic(eingabekategorie);
+                return;
             }
 
         }
@@ -162,19 +163,23 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "3s")
                 {
                     TrippleSingle();
+                    Console.Clear();
+                   
 
                 }
                 else if (eingabekategorie =="3d")
                 {
                     TrippleDouble();
+                    Console.Clear();
                 }
                 else if (eingabekategorie == "3t")
                 {
                     TrippleTripple();
+                    Console.Clear();
                 }
                 else 
                 {
-                    return;
+                    SHA();
                     
                 }
             }
@@ -197,11 +202,12 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
-                        TrippleSingle();
+                        return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         ClockMenu();
+                        Console.Clear();
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -247,7 +253,7 @@ namespace ConsoleApp1
 
             if (eingabekategorie == "reset")
             {
-                TrippleSingle();
+                return;
             }
             else if (eingabekategorie == "exit") 
             {
@@ -272,7 +278,7 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
-                        TrippleDouble();
+                        return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
@@ -325,7 +331,7 @@ namespace ConsoleApp1
 
             if (eingabekategorie == "reset")
             {
-                TrippleDouble();
+                return;
             }
             else if (eingabekategorie == "exit") ;
             {
@@ -349,7 +355,7 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
-                        TrippleTripple();
+                        return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
@@ -399,7 +405,7 @@ namespace ConsoleApp1
 
             if (eingabekategorie == "reset")
             {
-                TrippleTripple();
+                return;
             }
             else if (eingabekategorie == "exit") ;
             {

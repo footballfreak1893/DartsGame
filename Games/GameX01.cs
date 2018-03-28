@@ -36,12 +36,13 @@ namespace ConsoleApp1
                 }
                 else if (eingabeX01 == "exit")
                 {
-                    return;
+                    Starting.Start();
                 }
 
                 else
                 {
-                    SX01(eingabeX01);// beachten
+                    SX01(eingabeX01);
+                    return;
                 }
             }
         }
