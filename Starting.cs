@@ -40,7 +40,7 @@ namespace ConsoleApp1
                 }
                 else if (eingabekategorie == "X01")
                 {
-                    spiele.X01Doubleout();
+                    spiele.X01();
                     break;
                 }
                 else if (eingabekategorie == "SHA")

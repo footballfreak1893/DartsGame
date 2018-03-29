@@ -41,80 +41,145 @@ namespace ConsoleApp1
 
                 else
                 {
-                    SX01(eingabeX01);
+                    X01Modus(eingabeX01);
                     return;
                 }
             }
         }
+        public void X01Modus(string eingabeX01)
+        {
+            Console.WriteLine("-----" + eingabeX01 + "-----");
+            Console.WriteLine("Modus auswählen");
+            Console.WriteLine("Single Out -->press SO");
+            Console.WriteLine("Double Out -->press DO");
+            Console.WriteLine("Master Out -->press MO");
+            Console.WriteLine("Zurück zum X01 -->press exit");
+            string modus = Console.ReadLine();
+
+            while (true)
+            {
+                if (modus != "SO" && modus != "DO" && modus != "MO" && modus != "exit")
+                {
+                    Console.WriteLine("Ungültiger Wert");
+                    Console.WriteLine("Modus auswählen");
+                    Console.WriteLine("Single Out -->press SO");
+                    Console.WriteLine("Double Out -->press DO");
+                    Console.WriteLine("Master Out -->press MO");
+                    Console.WriteLine("Zurück zum X01 -->press exit");
+                    modus = Console.ReadLine();
+                    Console.Clear();
+                }
+                else if (modus == "SO")
+                {
+                    SX01(eingabeX01);
+
+
+                }
+                else if (modus == "DO")
+                {
+                    X01Doubleout(eingabeX01);
+                    
+                }
+                else if (modus == "MO")
+                {
+                   // X01Masterout(eingabeX01);
+                }
+                else
+                {
+                    X01();
+                }
+            }
+
+        }
 
         public void SX01(string eingabeX01)
         {
-            int punkte=0;
-            Console.WriteLine("-----" + eingabeX01 + "-----");
-            int punktestand;
+            int punkte = 0;
+            int anzeigezahl = 1;
+            int punktestand = 501;
+            int wurf;
+            string eingabekategorie;
+            int runde = 1;
+            int[] wuerfe = new int[3];
+            string[] eingabewuerfe = new string[3];
+            string[] wuerfeString = { "1", "2", "3" };
+            //int punkte = 0;
+            int gesamt = 0;
+
+
+            Console.WriteLine("-----" + eingabeX01 + " Single Out-----");
+
             punktestand = Convert.ToInt32(eingabeX01);
 
             while (punktestand != 0)
             {
-                Console.WriteLine("Punkestand " + punktestand);
-                Console.WriteLine("Punkezahl eingeben");
-                var eingabepunkte = Console.ReadLine();
-                
-
-                if (eingabepunkte == "reset")
+                for (wurf = 0; wurf <= 2; wurf++)
                 {
-                    return;
-                }
-                if (eingabepunkte == "exit")
-                {
-                    break;
-                }
 
-                //Überprüfung Zahl
-                bool canConvert = int.TryParse(eingabepunkte, out punkte);
+                    Console.WriteLine("Runde " + runde);
+                    Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
+                    eingabewuerfe[wurf] = Console.ReadLine();
 
-                while (canConvert == false)
-                {
-                    Console.WriteLine("Ungültiger Wert");
-                    Console.WriteLine("Punkezahl eingeben");
-                    eingabepunkte = Console.ReadLine();
-                    canConvert = int.TryParse(eingabepunkte, out punkte);
-                }
+                    //Überprüfung  reset, exit
+                    if (eingabewuerfe[wurf] == "reset")
+                    {    //Console.Clear();
+                        //return; ---> Achtung läuft noch nicht korrekt
+                    }
+                    if (eingabewuerfe[wurf] == "exit")
+                    {
+                        Console.Clear();
+                        X01();
+                    }
 
-                //Überprüfung Maximum/Minimum                  
-                while (punkte > 180 || punkte < 0)
-                {
-                    Console.WriteLine("Ungültiger Wert");
-                    Console.WriteLine("Punkezahl eingeben");
-                    eingabepunkte = Console.ReadLine();
-                    Console.Clear();
-
-                    //Überprüfung Zahl
-                    canConvert = int.TryParse(eingabepunkte, out punkte);
+                    //Überprüfung Datentyp 
+                    bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
 
                     while (canConvert == false)
                     {
                         Console.WriteLine("Ungültiger Wert");
                         Console.WriteLine("Punkezahl eingeben");
-                        eingabepunkte = Console.ReadLine();
-                        canConvert = int.TryParse(eingabepunkte, out punkte);
+                        eingabewuerfe[wurf] = Console.ReadLine();
+                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                    }
+
+                    //Überprüfung Maximum/Minimum                  
+                    while (wuerfe[wurf] > 60 || wuerfe[wurf] < 0)
+                    {
+                        Console.WriteLine("Ungültiger Wert");
+                        Console.WriteLine("Punkezahl eingeben");
+                        eingabewuerfe[wurf] = Console.ReadLine();
+
+
+                        //Überprüfung Datentyp
+                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+
+                        while (canConvert == false)
+                        {
+                            Console.WriteLine("Ungültiger Wert");
+                            Console.WriteLine("Punkezahl eingeben");
+                            eingabewuerfe[wurf] = Console.ReadLine();
+                            canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                        }
+                    }
+                 
+                    if ((punktestand - wuerfe[wurf]) < 0)
+                    {
+                        Console.WriteLine("Ungültiger Wert");
+                        punktestand = punktestand - 0;
+                        Console.WriteLine("Punktestand: " + punktestand);
+                    }
+                    else
+                    {
+                        punktestand = punktestand - wuerfe[wurf];
+                        Console.WriteLine("Punktestand: " + punktestand);
+                    }
+                    if (punktestand == 0)
+                    {
+                        break;
                     }
                 }
-                //Überprüfen, das Methode beendet wird
-
-                //punktestand = punktestand - punkte;
-                if (( punktestand - punkte) < 0)
-                {
-                    Console.WriteLine("Ungültiger Wert");
-                    punktestand = punktestand - 0;
-                }
-                else
-                {
-                    punktestand = punktestand - punkte;
-                }
+                runde++;
                
-               
-                
             }
             Console.WriteLine("Spiel beendet");
             Console.WriteLine("Spiel erneut starten -->press: reset");
@@ -138,9 +203,10 @@ namespace ConsoleApp1
             {
                 X01();
             }
-        }
 
-        public void X01Doubleout()
+        }
+            
+        public void X01Doubleout(string eingabeX01)
         {
             int anzeigezahl = 1;
             int punktestand = 501;
@@ -150,13 +216,13 @@ namespace ConsoleApp1
             int[] wuerfe = new int[3];
             string[] eingabewuerfe = new string[3];
             string[] wuerfeString = { "1", "2", "3" };
-           int punkte = 0;
+            int punkte = 0;
             int gesamt = 0;
-            
 
-            //Console.WriteLine("-----" + eingabeX01 + "-----");
-            
-            //punktestand = Convert.ToInt32(eingabeX01);
+
+            Console.WriteLine("-----" + eingabeX01 + " Double Out-----");
+
+            punktestand = Convert.ToInt32(eingabeX01);
 
             while (punktestand != 0)
             {
@@ -168,17 +234,17 @@ namespace ConsoleApp1
                     Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
                     eingabewuerfe[wurf] = Console.ReadLine();
 
-
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
-                    {
-                        return; //-->funktioniert nicht korrekt
+                    {    //Console.Clear();
+                        //return; ---> Achtung läuft noch nicht korrekt
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        //Console.Clear();
-                        //SHA();
+                        Console.Clear();
+                        X01();
                     }
+
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
 
@@ -190,58 +256,55 @@ namespace ConsoleApp1
                         canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
                     }
 
-                    ////Überprüfung Zahl 
-                    //while ((wuerfe[wurf] != anzeigezahl * 1) && (wuerfe[wurf] != anzeigezahl * 2) && (wuerfe[wurf] != anzeigezahl * 3) && (wuerfe[wurf] != 0) && eingabewuerfe[wurf] != "exit" && eingabewuerfe[wurf] != "reset")
-                    //{
-                    //    Console.WriteLine("Ungültige Zahl: ");
-                    //    Console.WriteLine("Eingabe wiederholen");
-                    //    eingabewuerfe[wurf] = Console.ReadLine();
-                    //    wuerfe[wurf] = Convert.ToInt16(eingabewuerfe[wurf]);
-                    //}
+                    //Überprüfung Maximum/Minimum                  
+                    while (wuerfe[wurf] > 60 || wuerfe[wurf] < 0)
+                    {
+                        Console.WriteLine("Ungültiger Wert");
+                        Console.WriteLine("Punkezahl eingeben");
+                        eingabewuerfe[wurf] = Console.ReadLine();
 
 
-                    //Console.Clear();
-                    punktestand = punktestand - wuerfe[wurf];
-                    
-                    //gesamt = wuerfe[0] + wuerfe[1] + wuerfe[2];
+                        //Überprüfung Datentyp
+                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
 
-                    Console.WriteLine("Punktestand: " + punktestand);
+                        while (canConvert == false)
+                        {
+                            Console.WriteLine("Ungültiger Wert");
+                            Console.WriteLine("Punkezahl eingeben");
+                            eingabewuerfe[wurf] = Console.ReadLine();
+                            canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                        }
+                    }
 
-                    ////Überprüfung Maximum/Minimum                  
-                    //while (punkte > 180 || punkte < 0)
-                    //{
-                    //    Console.WriteLine("Ungültiger Wert");
-                    //    Console.WriteLine("Punkezahl eingeben");
-                    //    eingabepunkte = Console.ReadLine();
-                    //    Console.Clear();
-
-                    //    //Überprüfung Zahl
-                    //    canConvert = int.TryParse(eingabepunkte, out punkte);
-
-                    //    while (canConvert == false)
-                    //    {
-                    //        Console.WriteLine("Ungültiger Wert");
-                    //        Console.WriteLine("Punkezahl eingeben");
-                    //        eingabepunkte = Console.ReadLine();
-                    //        canConvert = int.TryParse(eingabepunkte, out punkte);
-                    //    }
-                    //}
-
-                    if ((punktestand - wuerfe[wurf]) < 0)
+                     if ((punktestand - wuerfe[wurf] )<  0)
                     {
                         Console.WriteLine("Ungültiger Wert");
                         punktestand = punktestand - 0;
+                        Console.WriteLine("Punktestand: " + punktestand);
                     }
                     else
                     {
                         punktestand = punktestand - wuerfe[wurf];
+                        Console.WriteLine("Punktestand: " + punktestand);
+                    }
+                    if (punktestand == 0)
+                    {
+                        break;
                     }
                 }
-                //Console.WriteLine("Punktestand: " + punktestand);
-
+                runde++;
 
             }
+            Console.WriteLine("Spiel beendet");
+            Console.WriteLine("Spiel erneut starten -->press: reset");
+            Console.WriteLine("Zurück zum Menü X01 -->press exit");
+            eingabeX01 = Console.ReadLine();
+            Console.Clear();
+
+        }
+
         }
     }
 
-}
+
+
