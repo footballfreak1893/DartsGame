@@ -63,8 +63,8 @@ namespace ConsoleApp1
                     Console.WriteLine("Ungültiger Wert");
                     Console.WriteLine("Modus auswählen");
                     Console.WriteLine("Single Out -->press SO");
-                    Console.WriteLine("Double Out -->press DO");
-                    Console.WriteLine("Master Out -->press MO");
+                    //Console.WriteLine("Double Out -->press DO"); --> muss noch gemacht werden
+                    //Console.WriteLine("Master Out -->press MO");
                     Console.WriteLine("Zurück zum X01 -->press exit");
                     modus = Console.ReadLine();
                     Console.Clear();
@@ -293,7 +293,6 @@ namespace ConsoleApp1
                     }
                 }
                 runde++;
-
             }
             Console.WriteLine("Spiel beendet");
             Console.WriteLine("Spiel erneut starten -->press: reset");
