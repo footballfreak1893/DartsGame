@@ -42,17 +42,19 @@ namespace ConsoleApp1
                 else if (eingabekategorie == "classic")
                 {
                     SHAClassic(eingabekategorie);
-                    
+                    SHA();
+                    return;
                     
                 }
                 else if (eingabekategorie == "clock")
                 {
                     ClockMenu();
-                    break;
+                    SHA();
+                    return;
                 }
                 else if (eingabekategorie == "exit")
                 {
-                    Starting.Start(); 
+                    return;
                 }
             }
         }
@@ -78,7 +80,7 @@ namespace ConsoleApp1
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
-                        SHA();
+                        return;
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -128,7 +130,7 @@ namespace ConsoleApp1
 
             if (eingabekategorie == "exit")
             {
-                SHA();
+                return;
             }
             else if (eingabekategorie == "reset") 
             {
@@ -164,22 +166,29 @@ namespace ConsoleApp1
                 {
                     TrippleSingle();
                     Console.Clear();
-                   
+                    ClockMenu();
+                    return;
+
 
                 }
                 else if (eingabekategorie =="3d")
                 {
                     TrippleDouble();
                     Console.Clear();
+                    ClockMenu();
+                    return;
                 }
                 else if (eingabekategorie == "3t")
                 {
                     TrippleTripple();
                     Console.Clear();
+                    ClockMenu();
+                    return;
+
                 }
                 else 
                 {
-                    SHA();
+                    return;
                     
                 }
             }
@@ -206,7 +215,7 @@ namespace ConsoleApp1
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        ClockMenu();
+                        return;
                         Console.Clear();
                     }
                     //Überprüfung Datentyp 
@@ -257,7 +266,7 @@ namespace ConsoleApp1
             }
             else if (eingabekategorie == "exit") 
             {
-                ClockMenu();
+                return;
             }
         }
 
@@ -282,7 +291,7 @@ namespace ConsoleApp1
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        ClockMenu();
+                        return;
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -335,7 +344,7 @@ namespace ConsoleApp1
             }
             else if (eingabekategorie == "exit") ;
             {
-                ClockMenu();
+                return;
             }
         }
         public void TrippleTripple()
@@ -359,7 +368,7 @@ namespace ConsoleApp1
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        ClockMenu();
+                        return;
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -409,7 +418,7 @@ namespace ConsoleApp1
             }
             else if (eingabekategorie == "exit") ;
             {
-                ClockMenu();
+                return;
             }
         }
     }

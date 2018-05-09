@@ -46,12 +46,14 @@ namespace ConsoleApp1.Games
                 }
                 else if (eingabeX01 == "exit")
                 {
-                    Starting.Start();
+                    return;
                 }
 
                 else
                 {
                     GameHigh(eingabeX01);
+                    High();
+                    return;
                 }
             }
         }
@@ -81,7 +83,7 @@ namespace ConsoleApp1.Games
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
-                        High();
+                        return;
                     }
                     //Überprüfung Datentyp 
                     bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
@@ -119,7 +121,7 @@ namespace ConsoleApp1.Games
 
             if (eingabekategorie == "exit")
             {
-                High();
+                return;
             }
             else if (eingabekategorie == "reset")
             {

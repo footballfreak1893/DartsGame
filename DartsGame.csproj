@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Games\GameHighscore.cs" />
+    <Compile Include="Games\GameScoring.cs" />
     <Compile Include="Games\Wurf.cs" />
     <Compile Include="Games\GameCricket.cs" />
     <Compile Include="Games\GameShanghai.cs" />

@@ -36,7 +36,8 @@ namespace ConsoleApp1
                 }
                 else if (eingabeX01 == "exit")
                 {
-                    Starting.Start();
+                    
+                    return;
                 }
 
                 else
@@ -72,13 +73,17 @@ namespace ConsoleApp1
                 else if (modus == "SO")
                 {
                     SX01(eingabeX01);
+                    X01Modus(eingabeX01);
+                    return;
 
 
                 }
                 else if (modus == "DO")
                 {
                     X01Doubleout(eingabeX01);
-                    
+                    X01Modus(eingabeX01);
+                    return;
+
                 }
                 else if (modus == "MO")
                 {
@@ -128,7 +133,7 @@ namespace ConsoleApp1
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
-                        X01();
+                        return;
                     }
 
                     //Überprüfung Datentyp 
@@ -201,7 +206,7 @@ namespace ConsoleApp1
             }
             else
             {
-                X01();
+                return;
             }
 
         }
@@ -242,7 +247,7 @@ namespace ConsoleApp1
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
-                        X01();
+                        return;
                     }
 
                     //Überprüfung Datentyp 
