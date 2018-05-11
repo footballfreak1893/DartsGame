@@ -99,18 +99,13 @@ namespace ConsoleApp1
 
         public void SX01(string eingabeX01)
         {
-            int punkte = 0;
-            int anzeigezahl = 1;
             int punktestand = 501;
-            int wurf;
-            string eingabekategorie;
+            int wurf;   
             int runde = 1;
             int[] wuerfe = new int[3];
             string[] eingabewuerfe = new string[3];
             string[] wuerfeString = { "1", "2", "3" };
-            //int punkte = 0;
-            int gesamt = 0;
-
+   
 
             Console.WriteLine("-----" + eingabeX01 + " Single Out-----");
 
@@ -127,8 +122,10 @@ namespace ConsoleApp1
 
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
-                    {    //Console.Clear();
-                        //return; ---> Achtung läuft noch nicht korrekt
+                    {
+                        Console.Clear();
+                        SX01(eingabeX01);
+                        return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
@@ -202,6 +199,8 @@ namespace ConsoleApp1
             }
             if (eingabeX01 == "reset")
             {
+                Console.Clear();
+                SX01(eingabeX01);
                 return;
             }
             else
@@ -213,16 +212,15 @@ namespace ConsoleApp1
             
         public void X01Doubleout(string eingabeX01)
         {
-            int anzeigezahl = 1;
+            
             int punktestand = 501;
             int wurf;
-            string eingabekategorie;
+            
             int runde = 1;
             int[] wuerfe = new int[3];
             string[] eingabewuerfe = new string[3];
             string[] wuerfeString = { "1", "2", "3" };
-            int punkte = 0;
-            int gesamt = 0;
+           
 
 
             Console.WriteLine("-----" + eingabeX01 + " Double Out-----");
@@ -241,8 +239,8 @@ namespace ConsoleApp1
 
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
-                    {    //Console.Clear();
-                        //return; ---> Achtung läuft noch nicht korrekt
+                    {    Console.Clear();
+                        X01Doubleout(eingabeX01);
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
@@ -297,6 +295,7 @@ namespace ConsoleApp1
                         break;
                     }
                 }
+
                 runde++;
             }
             Console.WriteLine("Spiel beendet");
