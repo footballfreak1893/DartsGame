@@ -8,90 +8,89 @@ namespace ConsoleApp1
 {
     class GameX01
     {
-        Starting s1 = new Starting();
+        Starting starting = new Starting();
 
         public void X01()
         {
-            Console.WriteLine("-----X01-----");
-            Console.WriteLine("Spiel wählen");
-            Console.WriteLine("501 -->press 501");
-            Console.WriteLine("301 -->press 301");
-            Console.WriteLine("201 -->press 201");
-            Console.WriteLine("170 -->press 170");
-            Console.WriteLine("Zurück zum Hauptmenü -->press exit");
-            var eingabeX01 = Console.ReadLine();
-            Console.Clear();
+           
             while (true)
             {
-                if (eingabeX01 != "501" && eingabeX01 != "exit" && eingabeX01 != "301" && eingabeX01 != "201" && eingabeX01 != "170")
+                Console.WriteLine("-----X01-----");
+                Console.WriteLine("Spiel wählen");
+                Console.WriteLine("501 -->press 501");
+                Console.WriteLine("301 -->press 301");
+                Console.WriteLine("201 -->press 201");
+                Console.WriteLine("170 -->press 170");
+                Console.WriteLine("Zurück zum Hauptmenü -->press exit");
+                var eingabeX01 = Console.ReadLine();
+                Console.Clear();
+                
+                 if (eingabeX01 == "exit")
                 {
-                    Console.WriteLine("Spiel wählen");
-                    Console.WriteLine("501 -->press 501");
-                    Console.WriteLine("301 -->press 301");
-                    Console.WriteLine("201 -->press 201");
-                    Console.WriteLine("170 -->press 170");
-                    Console.WriteLine("Zurück zum Hauptmenü -->press exit");
-                    eingabeX01 = Console.ReadLine();
                     Console.Clear();
-                }
-                else if (eingabeX01 == "exit")
-                {
-                    
                     return;
                 }
 
-                else
+                else if (eingabeX01 =="501")
                 {
-                    X01Modus(eingabeX01);
-                    return;
+                    Console.Clear();
+                    X01Modus("501");
+                }
+
+                else if (eingabeX01 == "301")
+                {
+                    Console.Clear();
+                    X01Modus("301");
+                }
+
+                else if (eingabeX01 == "201")
+                {
+                    Console.Clear();
+                    X01Modus("201");
+                }
+
+                else if (eingabeX01 == "201")
+                {
+                    Console.Clear();
+                    X01Modus("201");
+                }
+                 else
+                {
+                    starting.InvalidValue();
                 }
             }
         }
         public void X01Modus(string eingabeX01)
         {
-            Console.WriteLine("-----" + eingabeX01 + "-----");
-            Console.WriteLine("Modus auswählen");
-            Console.WriteLine("Single Out -->press SO");
-            Console.WriteLine("Double Out -->press DO");
-            Console.WriteLine("Master Out -->press MO");
-            Console.WriteLine("Zurück zum X01 -->press exit");
-            string modus = Console.ReadLine();
+
 
             while (true)
             {
-                if (modus != "SO" && modus != "DO" && modus != "MO" && modus != "exit")
-                {
-                    Console.WriteLine("Ungültiger Wert");
-                    Console.WriteLine("Modus auswählen");
-                    Console.WriteLine("Single Out -->press SO");
-                    //Console.WriteLine("Double Out -->press DO"); --> muss noch gemacht werden
-                    //Console.WriteLine("Master Out -->press MO");
-                    Console.WriteLine("Zurück zum X01 -->press exit");
-                    modus = Console.ReadLine();
-                    Console.Clear();
-                }
-                else if (modus == "SO")
+                Console.WriteLine("-----" + eingabeX01 + "-----");
+                Console.WriteLine("Modus auswählen");
+                Console.WriteLine("Single Out -->press SO");
+                Console.WriteLine("Double Out -->press DO");
+                Console.WriteLine("Master Out -->press MO");
+                Console.WriteLine("Zurück zum X01 -->press exit");
+                string modus = Console.ReadLine();
+               
+                 if (modus == "SO")
                 {
                     SX01(eingabeX01);
-                    X01Modus(eingabeX01);
-                    return;
-
-
                 }
                 else if (modus == "DO")
                 {
+
                     X01Doubleout(eingabeX01);
-                    X01Modus(eingabeX01);
-                    return;
 
                 }
                 else if (modus == "MO")
                 {
-                   // X01Masterout(eingabeX01);
+                   
                 }
                 else
                 {
-                    X01();
+                    starting.InvalidValue();
                 }
             }
 
@@ -113,6 +112,8 @@ namespace ConsoleApp1
 
             while (punktestand != 0)
             {
+                Console.WriteLine("Runde " + runde);
+
                 for (wurf = 0; wurf <= 2; wurf++)
                 {
 
@@ -123,28 +124,18 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
-                        Console.Clear();
-                        SX01(eingabeX01);
-                        return;
+                        //Console.Clear();
+                        //SX01(eingabeX01);
+                        //return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
                         return;
                     }
+                    wuerfe[wurf]=starting.ÜberprüfungDatentyp();
 
-                    //Überprüfung Datentyp 
-                    bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-
-                    while (canConvert == false)
-                    {
-                        Console.WriteLine("Ungültiger Wert");
-                        Console.WriteLine("Punkezahl eingeben");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                    }
-
-                    //Überprüfung Maximum/Minimum                  
+                    //Überprüfung Maximum/ Minimum
                     while (wuerfe[wurf] > 60 || wuerfe[wurf] < 0)
                     {
                         Console.WriteLine("Ungültiger Wert");
@@ -152,18 +143,18 @@ namespace ConsoleApp1
                         eingabewuerfe[wurf] = Console.ReadLine();
 
 
-                        //Überprüfung Datentyp
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                        ////Überprüfung Datentyp
+                        //canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
 
-                        while (canConvert == false)
-                        {
-                            Console.WriteLine("Ungültiger Wert");
-                            Console.WriteLine("Punkezahl eingeben");
-                            eingabewuerfe[wurf] = Console.ReadLine();
-                            canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                        }
+                        //while (canConvert == false)
+                        //{
+                        //    Console.WriteLine("Ungültiger Wert");
+                        //    Console.WriteLine("Punkezahl eingeben");
+                        //    eingabewuerfe[wurf] = Console.ReadLine();
+                        //    canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                        //}
                     }
-                 
+
                     if ((punktestand - wuerfe[wurf]) < 0)
                     {
                         Console.WriteLine("Ungültiger Wert");
