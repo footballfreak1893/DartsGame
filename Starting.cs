@@ -59,11 +59,10 @@ namespace ConsoleApp1
 
         }
 
-        public int ÜberprüfungDatentyp()
+        public int ÜberprüfungDatentyp(string eingabewuerfe[])
         {
-            string[] eingabewuerfe = new string[3];
-            string[] wuerfeString = { "1", "2", "3" };
-            int wurf = 0;
+            
+            
 
             eingabewuerfe[wurf] = Console.ReadLine();
             bool CanConvert = false;
@@ -73,6 +72,8 @@ namespace ConsoleApp1
                     try
                     {
                         wurf = Convert.ToInt32(eingabewuerfe);
+                        CanConvert =true;
+                        break;
 
                     }
                     catch
