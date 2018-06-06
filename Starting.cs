@@ -59,19 +59,19 @@ namespace ConsoleApp1
 
         }
 
-        public int ÜberprüfungDatentyp(string eingabewuerfe[])
-        {
+        public int ÜberprüfungDatentyp(string eingabewuerfe)
+        { 
             
             
 
-            eingabewuerfe[wurf] = Console.ReadLine();
+            
             bool CanConvert = false;
 
                 while (!CanConvert)
                 {
                     try
                     {
-                        wurf = Convert.ToInt32(eingabewuerfe);
+                        spiele.wurf = Convert.ToInt32(eingabewuerfe);
                         CanConvert =true;
                         break;
 
@@ -80,7 +80,7 @@ namespace ConsoleApp1
                     {
                         Console.WriteLine("Ungültiger Wert: --> Ganze Zahl eingeben");
                     }
-                    eingabewuerfe[wurf] = Console.ReadLine();
+                    eingabewuerfe[spiele.wurf] = Console.ReadLine();
                 }
             return wurf;
         }

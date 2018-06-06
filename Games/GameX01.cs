@@ -9,7 +9,8 @@ namespace ConsoleApp1
     class GameX01
     {
         Starting starting = new Starting();
-
+        public int wurf;
+         public string[] eingabewuerfe = new string[3];
         public void X01()
         {
            
@@ -99,10 +100,10 @@ namespace ConsoleApp1
         public void SX01(string eingabeX01)
         {
             int punktestand = 501;
-            int wurf;   
+               
             int runde = 1;
             int[] wuerfe = new int[3];
-            string[] eingabewuerfe = new string[3];
+            
             string[] wuerfeString = { "1", "2", "3" };
    
 
@@ -133,7 +134,7 @@ namespace ConsoleApp1
                         Console.Clear();
                         return;
                     }
-                    wuerfe[wurf]=starting.ÜberprüfungDatentyp();
+                    wuerfe[wurf]=starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
 
                     //Überprüfung Maximum/ Minimum
                     while (wuerfe[wurf] > 60 || wuerfe[wurf] < 0)
