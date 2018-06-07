@@ -12,7 +12,6 @@ namespace ConsoleApp1
         //vars
         int anzeigezahl = 1;
         int punktestand = 0;
-        int wurf;
         string eingabekategorie;
         int runde = 1;
         int[] wuerfe = new int[3];
@@ -167,26 +166,8 @@ namespace ConsoleApp1
                     }
                     wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
                     wuerfe[wurf] = starting.ÜberprüfungZahlSHA(anzeigezahl, eingabewuerfe[wurf], wuerfe[wurf], mode);
-                    //Überprüfung Datentyp
-                    //bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-
-                    //while (canConvert == false)
-                    //{
-                    //    Console.WriteLine("Ungültiger Wert");
-                    //    Console.WriteLine("Punkezahl eingeben");
-                    //    eingabewuerfe[wurf] = Console.ReadLine();
-                    //    canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                    //}
-
-                    //Überprüfung Zahl
-                    //while ((wuerfe[wurf] != anzeigezahl) && (wuerfe[wurf] != 0) && eingabewuerfe[wurf] != "exit" && eingabewuerfe[wurf] != "reset")
-                    //{
-                    //    Console.WriteLine("Ungültige Zahl: ");
-                    //    Console.WriteLine("Eingabe wiederholen");
-                    //    eingabewuerfe[wurf] = Console.ReadLine();
-                    //    wuerfe[wurf] = Convert.ToInt16(eingabewuerfe[wurf]);
-                    //}
                 }
+
                 punktestand = punktestand + wuerfe[0] + wuerfe[1] + wuerfe[2];
 
                 Console.WriteLine("Punktestand: " + punktestand);
@@ -195,20 +176,7 @@ namespace ConsoleApp1
                 anzeigezahl++;
                 runde++;
             }
-            //Console.WriteLine("Spiel beendet");
-            //Console.WriteLine("Spiel erneut starten -->press: reset");
-            //Console.WriteLine("Zurück zum Menü ClockMenu -->press exit");
-            //eingabekategorie = Console.ReadLine();
-            //Console.Clear();
-
-            //while (eingabekategorie != "SHA" && eingabekategorie != "exit")
-            //{
-            //    Console.WriteLine("Ungültiger Wert");
-            //    Console.WriteLine("Spiel erneut starten -->press: reset");
-            //    Console.WriteLine("Zurück zum Menü ClockMenu -->press exit");
-            //    eingabekategorie = Console.ReadLine();
-            //    Console.Clear();
-            //}
+          
             starting.GameFinished("ClockMenu", eingabekategorie);
 
             if (eingabekategorie == "reset")
@@ -216,158 +184,6 @@ namespace ConsoleApp1
                 return;
             }
             else if (eingabekategorie == "exit")
-            {
-                return;
-            }
-        }
-
-        public void TrippleDouble()
-        {
-            Console.WriteLine("-----Around the Clock 3 Fach-----");
-            Console.WriteLine("-----3x Doubletreffer-----");
-
-            while (anzeigezahl < 22)
-            {
-                for (int wurf = 0; wurf <= 2; wurf++)
-                {
-                    Console.WriteLine("Runde " + runde);
-                    Console.WriteLine("Zuwerfende Zahl: Double " + anzeigezahl);
-                    Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
-                    eingabewuerfe[wurf] = Console.ReadLine();
-
-                    //Überprüfung  reset, exit
-                    if (eingabewuerfe[wurf] == "reset")
-                    {
-                        return;
-                    }
-                    if (eingabewuerfe[wurf] == "exit")
-                    {
-                        return;
-                    }
-                    //Überprüfung Datentyp 
-                    bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-
-                    while (canConvert == false)
-                    {
-                        Console.WriteLine("Ungültiger Wert");
-                        Console.WriteLine("Punkezahl eingeben");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                    }
-
-
-                    //Überprüfung Zahl 
-                    while ((wuerfe[wurf] != anzeigezahl * 2) && (wuerfe[wurf] != 0) && eingabewuerfe[wurf] != "exit" && eingabewuerfe[wurf] != "reset")
-                    {
-                        Console.WriteLine("Ungültige Zahl: ");
-                        Console.WriteLine("Eingabe wiederholen");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        wuerfe[wurf] = Convert.ToInt16(eingabewuerfe[wurf]);
-                    }
-
-
-                }
-                punktestand = punktestand + wuerfe[0] + wuerfe[1] + wuerfe[2];
-                Console.WriteLine("Punktestand: " + punktestand);
-                //anzeigezahl++;
-
-                anzeigezahl++;
-                runde++;
-            }
-            Console.WriteLine("Spiel beendet");
-            Console.WriteLine("Spiel erneut starten -->press: reset");
-            Console.WriteLine("Zurück zum ClockMenu -->press exit");
-            eingabekategorie = Console.ReadLine();
-            Console.Clear();
-
-            while (eingabekategorie != "SHA" && eingabekategorie != "exit")
-            {
-                Console.WriteLine("Ungültiger Wert");
-                Console.WriteLine("Spiel erneut starten -->press: reset");
-                Console.WriteLine("Zurück zum ClockMenu -->press exit");
-                eingabekategorie = Console.ReadLine();
-                Console.Clear();
-            }
-
-            if (eingabekategorie == "reset")
-            {
-                return;
-            }
-            else if (eingabekategorie == "exit") ;
-            {
-                return;
-            }
-        }
-        public void TrippleTripple()
-        {
-            Console.WriteLine("-----Around the Clock 3 Fach-----");
-            Console.WriteLine("-----3x Trippletreffer-----");
-
-            while (anzeigezahl < 22)
-            {
-                for (int wurf = 0; wurf <= 2; wurf++)
-                {
-                    Console.WriteLine("Runde " + runde);
-                    Console.WriteLine("Zuwerfende Zahl: Tripple " + anzeigezahl);
-                    Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
-                    eingabewuerfe[wurf] = Console.ReadLine();
-
-                    //Überprüfung  reset, exit
-                    if (eingabewuerfe[wurf] == "reset")
-                    {
-                        return;
-                    }
-                    if (eingabewuerfe[wurf] == "exit")
-                    {
-                        return;
-                    }
-                    //Überprüfung Datentyp 
-                    bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-
-                    while (canConvert == false)
-                    {
-                        Console.WriteLine("Ungültiger Wert");
-                        Console.WriteLine("Punkezahl eingeben");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                    }
-
-                    //Überprüfung Zahl 
-                    while ((wuerfe[wurf] != anzeigezahl * 3) && (wuerfe[wurf] != 0) && eingabewuerfe[wurf] != "exit" && eingabewuerfe[wurf] != "reset")
-                    {
-                        Console.WriteLine("Ungültige Zahl: ");
-                        Console.WriteLine("Eingabe wiederholen");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        wuerfe[wurf] = Convert.ToInt16(eingabewuerfe[wurf]);
-                    }
-                }
-                punktestand = punktestand + wuerfe[0] + wuerfe[1] + wuerfe[2];
-                Console.WriteLine("Punktestand: " + punktestand);
-                //anzeigezahl++;
-
-                anzeigezahl++;
-                runde++;
-            }
-            Console.WriteLine("Spiel beendet");
-            Console.WriteLine("Spiel erneut starten -->press: reset");
-            Console.WriteLine("Zurück zum ClockMenu -->press exit");
-            eingabekategorie = Console.ReadLine();
-            Console.Clear();
-
-            while (eingabekategorie != "SHA" && eingabekategorie != "exit")
-            {
-                Console.WriteLine("Ungültiger Wert");
-                Console.WriteLine("Spiel erneut starten -->press: reset");
-                Console.WriteLine("Zurück zum ClockMenu -->press exit");
-                eingabekategorie = Console.ReadLine();
-                Console.Clear();
-            }
-
-            if (eingabekategorie == "reset")
-            {
-                return;
-            }
-            else if (eingabekategorie == "exit") 
             {
                 return;
             }
