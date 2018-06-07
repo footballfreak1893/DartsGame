@@ -96,6 +96,17 @@ namespace ConsoleApp1
             return wuerfe;
         }
 
+        public int ÜberprüfungZahlSHA(int anzeigezahl, string eingabewuerfe, int wuerfe)
+        {
+            while ((wuerfe != anzeigezahl * 1) && (wuerfe != anzeigezahl * 2) && (wuerfe != anzeigezahl * 3) && (wuerfe != 0) && eingabewuerfe != "exit" && eingabewuerfe != "reset")
+            {
+                InvalidValue();
+                eingabewuerfe = Console.ReadLine();
+                wuerfe = Convert.ToInt16(eingabewuerfe);
+            }
+            return wuerfe;
+        }
+
         public void InvalidValue()
         {
             Console.WriteLine("Ungültiger Wert");
