@@ -124,7 +124,8 @@ namespace ConsoleApp1
                     eingabewuerfe[wurf] = Console.ReadLine();
 
                     //Überprüfung  reset, exit
-                    if (eingabewuerfe[wurf] == "reset")
+
+                    if (eingabewuerfe[wurf] == "reset") // ---> Muss noch gemacht werden !!!!
                     {
                         //Console.Clear();
                         //SX01(eingabeX01);

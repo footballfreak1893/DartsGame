@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class Starting
     {
-        private static GameX01 spiele = new GameX01();
+        private static GameX01 x01 = new GameX01();
         private static GameCricket cricket = new GameCricket();
         private static GameShanghai shanghai = new GameShanghai();
         private static Games.GameHighscore highscore = new Games.GameHighscore();
@@ -21,8 +21,6 @@ namespace ConsoleApp1
         }
         static public void Start()
         {
-
-
             while (true)
             {
                 Console.WriteLine("-----Dartsprogramm-----");
@@ -37,7 +35,7 @@ namespace ConsoleApp1
 
                 if (eingabekategorie == "X01")
                 {
-                    spiele.X01();
+                    x01.X01();
                 }
                 else if (eingabekategorie == "SHA")
                 {
@@ -72,7 +70,6 @@ namespace ConsoleApp1
                     punkte = Convert.ToInt32(eingabewuerfe);
                     CanConvert = true;
                     break;
-
                 }
                 catch
                 {
@@ -108,16 +105,15 @@ namespace ConsoleApp1
                 }
             }
 
-            else 
+            else
             {
-                while ((wuerfe != anzeigezahl * mode )  && (wuerfe != 0) && eingabewuerfe != "exit" && eingabewuerfe != "reset")
+                while ((wuerfe != anzeigezahl * mode) && (wuerfe != 0) && eingabewuerfe != "exit" && eingabewuerfe != "reset")
                 {
                     InvalidValue();
                     eingabewuerfe = Console.ReadLine();
                     wuerfe = Convert.ToInt16(eingabewuerfe);
                 }
             }
-           
 
             return wuerfe;
         }
@@ -134,18 +130,24 @@ namespace ConsoleApp1
 
         public string GameFinished(string gameMenu, string eingabeX01)
         {
-                Console.WriteLine("Spiel beendet");
-                Console.WriteLine("Spiel erneut starten -->press: reset");
-                Console.WriteLine("Zurück zum Menü " + gameMenu + " -->press exit");
-                 eingabeX01 = Console.ReadLine();
-                Console.Clear();
-            Console.WriteLine("XD");
-
+            Console.WriteLine("Spiel beendet");
+            Console.WriteLine("Spiel erneut starten -->press: reset");
+            Console.WriteLine("Zurück zum Menü " + gameMenu + " -->press exit");
+            eingabeX01 = Console.ReadLine();
+            Console.Clear();
             return eingabeX01;
 
-            }
+        }
+        public void Wertelöschen()
+        {
+            shanghai.punktestand = 0;
+            shanghai.anzeigezahl = 1;
+            shanghai.runde = 0;
         }
     }
+
+
+}
 
 
 

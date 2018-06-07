@@ -10,10 +10,10 @@ namespace ConsoleApp1
     {
         Starting starting = new Starting();
         //vars
-        int anzeigezahl = 1;
-        int punktestand = 0;
-        string eingabekategorie;
-        int runde = 1;
+        public int anzeigezahl = 1;
+         public int punktestand = 0;
+         public string eingabekategorie;
+       public int runde = 1;
         int[] wuerfe = new int[3];
         string[] eingabewuerfe = new string[3];
         string[] wuerfeString = { "1", "2", "3" };
@@ -57,8 +57,9 @@ namespace ConsoleApp1
         {
             Console.WriteLine("-----SHA Classic-----");
 
+            starting.Wertelöschen();
             for (runde = 1; runde < 8; runde++)
-            {
+            { 
                 for (int wurf = 0; wurf <= 2; wurf++)
                 {
                     Console.WriteLine("Runde " + runde);
@@ -69,11 +70,13 @@ namespace ConsoleApp1
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
                     {
+                        Console.Clear();
                         return; //-->funktioniert nicht korrekt
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
+                        SHA();
                         return;
                     }
                     wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
@@ -90,10 +93,12 @@ namespace ConsoleApp1
 
             if (eingabekategorie == "exit")
             {
-                return;
+                Console.Clear();
+                SHA();
             }
-            else if (eingabekategorie == "reset")
+            else if (eingabekategorie == "reset") //--> muss noch überprüft werden !!!!!
             {
+                Console.Clear();
                 return;
             }
             else
@@ -101,7 +106,6 @@ namespace ConsoleApp1
                 starting.InvalidValue(); 
                 starting.GameFinished("SHA", eingabekategorie);
             }
-
         }
         public void ClockMenu()
         {
@@ -143,8 +147,9 @@ namespace ConsoleApp1
         public void AroundTheClock(int mode, string clockmode)
         {
             Console.WriteLine("-----Around the Clock 3 Fach-----");
-            Console.WriteLine("-----3x "+clockmode +"treffer-----");
+            Console.WriteLine("-----3x " + clockmode + "treffer-----");
 
+            starting.Wertelöschen();
             while (anzeigezahl < 22)
             {
                 for (int wurf = 0; wurf <= 2; wurf++)
@@ -155,14 +160,16 @@ namespace ConsoleApp1
                     eingabewuerfe[wurf] = Console.ReadLine();
 
                     //Überprüfung  reset, exit
-                    if (eingabewuerfe[wurf] == "reset")
+                    if (eingabewuerfe[wurf] == "reset") //--> muss noch überprüft werden !!!!!
                     {
                         //noch offen
+                        Console.Clear();
                         return;
                     }
                     if (eingabewuerfe[wurf] == "exit")
                     {
-                        //Noch offen
+                        Console.Clear();
+                        ClockMenu();
                     }
                     wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
                     wuerfe[wurf] = starting.ÜberprüfungZahlSHA(anzeigezahl, eingabewuerfe[wurf], wuerfe[wurf], mode);
