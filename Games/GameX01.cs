@@ -10,10 +10,11 @@ namespace ConsoleApp1
     {
         Starting starting = new Starting();
         public int wurf;
-         public string[] eingabewuerfe = new string[3];
+        string eingabeX01 = "";
+
+        public string[] eingabewuerfe = new string[3];
         public void X01()
         {
-           
             while (true)
             {
                 Console.WriteLine("-----X01-----");
@@ -25,14 +26,14 @@ namespace ConsoleApp1
                 Console.WriteLine("Zurück zum Hauptmenü -->press exit");
                 var modusPunkte = Console.ReadLine();
                 Console.Clear();
-                
-                 if (modusPunkte == "exit")
+
+                if (modusPunkte == "exit")
                 {
                     Console.Clear();
                     return;
                 }
 
-                else if (modusPunkte =="501")
+                else if (modusPunkte == "501")
                 {
                     Console.Clear();
                     X01Modus("501");
@@ -55,12 +56,13 @@ namespace ConsoleApp1
                     Console.Clear();
                     X01Modus("170");
                 }
-                 else
+                else
                 {
                     starting.InvalidValue();
                 }
             }
         }
+
         public void X01Modus(string modusPunkte)
         {
             while (true)
@@ -72,8 +74,8 @@ namespace ConsoleApp1
                 Console.WriteLine("Master Out -->press MO");
                 Console.WriteLine("Zurück zum X01 -->press exit");
                 string modus = Console.ReadLine();
-               
-                 if (modus == "SO")
+
+                if (modus == "SO")
                 {
                     SX01(modusPunkte);
                 }
@@ -85,9 +87,9 @@ namespace ConsoleApp1
                 }
                 else if (modus == "MO")
                 {
-                   
+                    // Noch offen
                 }
-                else if (modus =="exit")
+                else if (modus == "exit")
                 {
                     return;
                 }
@@ -101,13 +103,11 @@ namespace ConsoleApp1
 
         public void SX01(string modusPunkte)
         {
-            string eingabeX01 = "";
-            int punktestand = 501;
+            int punktestand = 0;
             int runde = 1;
             int[] wuerfe = new int[3];
-            
+
             string[] wuerfeString = { "1", "2", "3" };
-   
 
             Console.WriteLine("-----" + modusPunkte + " Single Out-----");
 
@@ -155,47 +155,43 @@ namespace ConsoleApp1
                     }
                 }
                 runde++;
-               
+
             }
-           eingabeX01 = starting.GameFinished("X01", eingabeX01);
 
+            eingabeX01 = starting.GameFinished("X01", eingabeX01);
 
-
-            if (eingabeX01 == "exit")
+            if (eingabeX01 == "exit") //--> passt
             {
                 Console.Clear();
                 return;
-                
+
             }
-           else if (eingabeX01 == "reset")
+            else if (eingabeX01 == "reset") //--> passt
             {
                 Console.Clear();
                 SX01(modusPunkte);
                 return;
             }
-           else
-           {
-                starting.InvalidValue();
+            else
+            {
+                starting.InvalidValue(); //--> passt
                 starting.GameFinished("X01", eingabeX01);
-           }
+            }
         }
-            
-        public void X01Doubleout(string eingabeX01)
+
+        public void X01Doubleout(string modusPunkte)
         {
-            
-            int punktestand = 501;
+            int punktestand = 0;
             int wurf;
-            
+
             int runde = 1;
             int[] wuerfe = new int[3];
             string[] eingabewuerfe = new string[3];
             string[] wuerfeString = { "1", "2", "3" };
-           
 
+            Console.WriteLine("-----" + modusPunkte + " Double Out-----");
 
-            Console.WriteLine("-----" + eingabeX01 + " Double Out-----");
-
-            punktestand = Convert.ToInt32(eingabeX01);
+            punktestand = Convert.ToInt32(modusPunkte);
 
             while (punktestand != 0)
             {
@@ -209,7 +205,8 @@ namespace ConsoleApp1
 
                     //Überprüfung  reset, exit
                     if (eingabewuerfe[wurf] == "reset")
-                    {    Console.Clear();
+                    {
+                        Console.Clear();
                         X01Doubleout(eingabeX01);
                     }
                     if (eingabewuerfe[wurf] == "exit")
@@ -218,38 +215,10 @@ namespace ConsoleApp1
                         return;
                     }
 
-                    //Überprüfung Datentyp 
-                    bool canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
+                    wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
+                    wuerfe[wurf] = starting.ÜberprüfungMax_Min(wuerfe[wurf], eingabewuerfe[wurf]);
 
-                    while (canConvert == false)
-                    {
-                        Console.WriteLine("Ungültiger Wert");
-                        Console.WriteLine("Punkezahl eingeben");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                    }
-
-                    //Überprüfung Maximum/Minimum                  
-                    while (wuerfe[wurf] > 60 || wuerfe[wurf] < 0)
-                    {
-                        Console.WriteLine("Ungültiger Wert");
-                        Console.WriteLine("Punkezahl eingeben");
-                        eingabewuerfe[wurf] = Console.ReadLine();
-
-
-                        //Überprüfung Datentyp
-                        canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-
-                        while (canConvert == false)
-                        {
-                            Console.WriteLine("Ungültiger Wert");
-                            Console.WriteLine("Punkezahl eingeben");
-                            eingabewuerfe[wurf] = Console.ReadLine();
-                            canConvert = int.TryParse(eingabewuerfe[wurf], out wuerfe[wurf]);
-                        }
-                    }
-
-                     if ((punktestand - wuerfe[wurf] )<  0)
+                    if ((punktestand - wuerfe[wurf]) < 0)
                     {
                         Console.WriteLine("Ungültiger Wert");
                         punktestand = punktestand - 0;
@@ -268,16 +237,31 @@ namespace ConsoleApp1
 
                 runde++;
             }
-            Console.WriteLine("Spiel beendet");
-            Console.WriteLine("Spiel erneut starten -->press: reset");
-            Console.WriteLine("Zurück zum Menü X01 -->press exit");
-            eingabeX01 = Console.ReadLine();
-            Console.Clear();
+
+            eingabeX01 = starting.GameFinished("X01", eingabeX01);
+
+            if (eingabeX01 == "exit") //--> passt
+            {
+                Console.Clear();
+                return;
+
+            }
+            else if (eingabeX01 == "reset") //--> passt
+            {
+                Console.Clear();
+                X01Doubleout(modusPunkte);
+                return;
+            }
+            else
+            {
+                starting.InvalidValue(); //--> passt
+                starting.GameFinished("X01", eingabeX01);
+            }
 
         }
 
-        }
     }
+}
 
 
 

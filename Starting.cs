@@ -117,27 +117,7 @@ namespace ConsoleApp1
 
             return eingabeX01;
 
-                //if (eingabeX01 == "reset")
-                //{
-                //    //    Console.Clear();
-                //    //    SX01(eingabeX01);
-                //    //    return;
-                //    FunktioniertTest();
-                //    //}
-                //}
-                //else if (eingabeX01 == "exit")
-                //{
-                //    //Console.Clear();
-                //    FunktioniertTest();
-                //}
-                //else
-                //{
-                //    InvalidValue();
-                //}
-                
-
             }
-
         }
     }
 
