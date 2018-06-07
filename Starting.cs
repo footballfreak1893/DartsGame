@@ -21,7 +21,7 @@ namespace ConsoleApp1
         }
         static public void Start()
         {
-            
+
 
             while (true)
             {
@@ -60,37 +60,87 @@ namespace ConsoleApp1
         }
 
         public int ÜberprüfungDatentyp(string eingabewuerfe)
-        { 
-            
-            
+        {
+            int punkte = 0;
 
-            
             bool CanConvert = false;
 
-                while (!CanConvert)
+            while (!CanConvert)
+            {
+                try
                 {
-                    try
-                    {
-                        spiele.wurf = Convert.ToInt32(eingabewuerfe);
-                        CanConvert =true;
-                        break;
+                    punkte = Convert.ToInt32(eingabewuerfe);
+                    CanConvert = true;
+                    break;
 
-                    }
-                    catch
-                    {
-                        Console.WriteLine("Ungültiger Wert: --> Ganze Zahl eingeben");
-                    }
-                    eingabewuerfe[spiele.wurf] = Console.ReadLine();
                 }
-            return wurf;
+                catch
+                {
+                    Console.WriteLine("Ungültiger Wert: --> Ganze Zahl eingeben");
+                }
+                eingabewuerfe = Console.ReadLine();
+            }
+            return punkte;
         }
+
+        public int ÜberprüfungMax_Min(int wuerfe, string eingabewuerfe)
+        {
+            while (wuerfe > 60 || wuerfe < 0)
+            {
+                InvalidValue();
+                Console.WriteLine("MAX/MIN");
+                Console.WriteLine("Punkezahl eingeben");
+                eingabewuerfe = Console.ReadLine();
+                wuerfe = ÜberprüfungDatentyp(eingabewuerfe);
+            }
+            return wuerfe;
+        }
+
         public void InvalidValue()
         {
             Console.WriteLine("Ungültiger Wert");
         }
 
+        public void FunktioniertTest()
+        {
+            Console.WriteLine("Funktioniert bisher");
+        }
+
+        public string GameFinished(string gameMenu, string eingabeX01)
+        {
+                Console.WriteLine("Spiel beendet");
+                Console.WriteLine("Spiel erneut starten -->press: reset");
+                Console.WriteLine("Zurück zum Menü " + gameMenu + " -->press exit");
+                 eingabeX01 = Console.ReadLine();
+                Console.Clear();
+            Console.WriteLine("XD");
+
+            return eingabeX01;
+
+                //if (eingabeX01 == "reset")
+                //{
+                //    //    Console.Clear();
+                //    //    SX01(eingabeX01);
+                //    //    return;
+                //    FunktioniertTest();
+                //    //}
+                //}
+                //else if (eingabeX01 == "exit")
+                //{
+                //    //Console.Clear();
+                //    FunktioniertTest();
+                //}
+                //else
+                //{
+                //    InvalidValue();
+                //}
+                
+
+            }
+
+        }
     }
-}
+
 
 
 
