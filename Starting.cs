@@ -30,22 +30,22 @@ namespace ConsoleApp1
                 Console.WriteLine("Highscore -->press HI");
                 Console.WriteLine("Highscore -->press SCO");
                 // Console.WriteLine("Cricket -->press CRI");
-                string eingabekategorie = Console.ReadLine();
+                string input = Console.ReadLine();
                 Console.Clear();
 
-                if (eingabekategorie == "X01")
+                if (input == "X01")
                 {
                     x01.X01();
                 }
-                else if (eingabekategorie == "SHA")
+                else if (input == "SHA")
                 {
                     shanghai.SHA();
                 }
-                else if (eingabekategorie == "HI")
+                else if (input == "HI")
                 {
                     highscore.High();
                 }
-                else if (eingabekategorie == "SCO")
+                else if (input == "SCO")
                 {
                     scoring.TrainingZahl();
                 }

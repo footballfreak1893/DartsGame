@@ -11,6 +11,7 @@ namespace ConsoleApp1
         Starting starting = new Starting();
         public int wurf;
         string eingabeX01 = "";
+        string x01modus = "";
 
         public string[] eingabewuerfe = new string[3];
         public void X01()
@@ -24,37 +25,37 @@ namespace ConsoleApp1
                 Console.WriteLine("201 -->press 201");
                 Console.WriteLine("170 -->press 170");
                 Console.WriteLine("Zurück zum Hauptmenü -->press exit");
-                var modusPunkte = Console.ReadLine();
+                string x01modus = Console.ReadLine();
                 Console.Clear();
 
-                if (modusPunkte == "exit")
+                if (x01modus == "exit")
                 {
                     Console.Clear();
                     return;
                 }
 
-                else if (modusPunkte == "501")
+                else if (x01modus == "501")
                 {
                     Console.Clear();
-                    X01Modus("501");
+                    OutModus("501");
                 }
 
-                else if (modusPunkte == "301")
+                else if (x01modus == "301")
                 {
                     Console.Clear();
-                    X01Modus("301");
+                    OutModus("301");
                 }
 
-                else if (modusPunkte == "201")
+                else if (x01modus == "201")
                 {
                     Console.Clear();
-                    X01Modus("201");
+                    OutModus("201");
                 }
 
-                else if (modusPunkte == "170")
+                else if (x01modus == "170")
                 {
                     Console.Clear();
-                    X01Modus("170");
+                    OutModus("170");
                 }
                 else
                 {
@@ -63,7 +64,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void X01Modus(string modusPunkte)
+        public void OutModus(string modusPunkte)
         {
             while (true)
             {
@@ -91,6 +92,7 @@ namespace ConsoleApp1
                 }
                 else if (modus == "exit")
                 {
+                    Console.Clear();
                     return;
                 }
                 else
