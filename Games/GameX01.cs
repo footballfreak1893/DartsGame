@@ -103,6 +103,7 @@ namespace ConsoleApp1
 
         public void SX01(string modusPunkte)
         {
+            
             int punktestand = 0;
             int runde = 1;
             int[] wuerfe = new int[3];
@@ -110,10 +111,10 @@ namespace ConsoleApp1
             string[] wuerfeString = { "1", "2", "3" };
 
             Console.WriteLine("-----" + modusPunkte + " Single Out-----");
-
+            
             punktestand = Convert.ToInt32(modusPunkte);
 
-            while (punktestand != 0)
+            while (punktestand != 0 )
             {
                 Console.WriteLine("Runde " + runde);
 
@@ -122,37 +123,42 @@ namespace ConsoleApp1
 
                     Console.WriteLine(wuerfeString[wurf] + ".Pfeil -->Punkte eingeben");
                     eingabewuerfe[wurf] = Console.ReadLine();
+                    Console.WriteLine(eingabewuerfe[wurf]);
 
                     //Überprüfung  reset, exit
 
                     if (eingabewuerfe[wurf] == "reset") // ---> Muss noch gemacht werden !!!!
                     {
-                        //Console.Clear();
-                        //SX01(eingabeX01);
-                        //return;
+
+                        Console.Clear();
+                        SX01(modusPunkte);
+                        return;
                     }
-                    if (eingabewuerfe[wurf] == "exit")
+                    else if (eingabewuerfe[wurf] == "exit")
                     {
                         Console.Clear();
                         return;
                     }
-                    wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
-                    wuerfe[wurf] = starting.ÜberprüfungMax_Min(wuerfe[wurf], eingabewuerfe[wurf]);
-
-                    if ((punktestand - wuerfe[wurf]) < 0)
-                    {
-                        starting.InvalidValue();
-                        punktestand = punktestand - 0;
-                        Console.WriteLine("Punktestand: " + punktestand);
-                    }
                     else
                     {
-                        punktestand = punktestand - wuerfe[wurf];
-                        Console.WriteLine("Punktestand: " + punktestand);
-                    }
-                    if (punktestand == 0)
-                    {
-                        break;
+                        wuerfe[wurf] = starting.ÜberprüfungDatentyp(eingabewuerfe[wurf]);
+                        wuerfe[wurf] = starting.ÜberprüfungMax_Min(wuerfe[wurf], eingabewuerfe[wurf]);
+
+                        if ((punktestand - wuerfe[wurf]) < 0)
+                        {
+                            starting.InvalidValue();
+                            punktestand = punktestand - 0;
+                            Console.WriteLine("Punktestand: " + punktestand);
+                        }
+                        else
+                        {
+                            punktestand = punktestand - wuerfe[wurf];
+                            Console.WriteLine("Punktestand: " + punktestand);
+                        }
+                        if (punktestand == 0)
+                        {
+                            break;
+                        }
                     }
                 }
                 runde++;
